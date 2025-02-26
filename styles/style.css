@@ -1,0 +1,347 @@
+.page {
+  width: calc(100vw * (700 / 1440));
+  min-width: 430px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  color: var(--main-color);
+  font-family: var(--font-main);
+  background: var(--background);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-variation-settings: "wght" var(--font-weight-content);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 23px;
+  margin-bottom: 100px;
+  border: 2px solid var(--main-color );
+  padding: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem) clamp(0.875rem, -1.4754rem + 10.0282vw, 7.55rem);
+  font-family: var(--font-accent);
+  background-color: var(--backgroud-color);
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__logo__title {
+  font-size: clamp(3.063rem, 1.909rem + 4.923vw, 4.063rem);
+}
+
+
+.header__title:focus {
+  outline: none;
+}
+
+.header__description {
+  text-transform: uppercase;
+  font-size: clamp(0.875rem, 0.226rem + 2.769vw, 1.438rem);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.post {
+  border: 2px solid var(--main-color);
+  background-color: var(--backgroud-color);
+}
+
+.post__title {
+  padding: 5px 10px;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-title);
+}
+
+.post__cover {
+  position: relative;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
+.post__cover__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+}
+
+.post__cover__watermark {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  opacity: 0.5;
+  color: var(--main-color);
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 14px;
+  text-shadow: 0 0 1px var(--backgroud-color);
+}
+
+@supports (((text-stroke: 1px var(--backgroud-color)) or (-webkit-text-stroke: 1px var(--backgroud-color))) and (mix-blend-mode: hard-light)) {
+  .post__cover__watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--backgroud-color);
+    text-stroke: 1px var(--backgroud-color);
+    mix-blend-mode: hard-light;
+  }
+}
+
+.post__content {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 25px;
+  padding-bottom: 22px;
+  font-size: 18px;
+  line-height: 21px;
+  font-variation-settings: "wght" var(--font-weight-content);
+}
+
+.post__buttons {
+  display: flex;
+  justify-content: end;
+  gap: 7px;
+  padding-bottom: 3px;
+}
+
+.main__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.card__icon-button {
+  position: relative;
+  display: flex;
+  align-items: end;
+  min-height: 38px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline-offset: -2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card__icon-button:focus-within::before {
+  opacity: 100;
+  z-index: 0;
+}
+
+.card__like-button {
+  width: 130px;
+  min-height: 38px;
+  padding: 9px 17px;
+}
+
+.button__container {
+  background: var(--backgroud-color);
+}
+
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  background: var(--backgroud-color);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.footer__button {
+  gap: 8px;
+  min-height: 55px;
+  padding: 15px 20px;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 1);
+  outline: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--main-color);
+  transition: width 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button__text {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  color: var(--button-text-color);
+}
+
+.button .button__text {
+  transition: color 0.5s ease-in-out;
+}
+
+.button:hover .button__text {
+  color: var(--backgroud-color);
+}
+
+.button svg {
+  transition: color 0.5s ease-in-out;
+}
+
+.button:hover svg {
+  color: var(--backgroud-color);
+}
+
+@supports (mix-blend-mode: difference) {
+  .button .button__text {
+    transition: none;
+  }
+
+  .button:hover .button__text {
+    color: var(--button-text-color);
+  }
+
+  .button:hover svg {
+    color: var(--button-text-color);
+  }
+
+  .button__text {
+    mix-blend-mode: difference;
+  }
+}
+
+dialog::backdrop {
+  opacity: 0.75;
+  background: var(--main-color, #000);
+}
+
+.dialog {
+  width: calc(115vw * (352 / 1440));
+  min-width: 341px;
+  border: 2px solid var(--main-color);
+  padding: 30px;
+  width: clamp(21.313rem, 21.048rem + 1.127vw, 22.063rem);
+  background: var(--backgroud-color);
+  gap: 30px;
+}
+
+.dialog__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: var(--main-color);
+}
+
+.dialog__warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.dialog__warning__image{
+  min-width: 39px;
+}
+
+.dialog__button {
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 38px;
+  padding: 9px 17px;
+}
+.dialog__button__text {
+  text-transform: uppercase;
+
+}
+
+.image_brightness {
+  filter: brightness(130%);
+}
+
+.image_contrast {
+  filter: contrast(150%);
+}
+
+.image_blur {
+  filter: blur(0.3rem);
+}
+
+.image_opacity {
+  filter: opacity(0.8);
+}
+
+.image_grayscale {
+  filter: grayscale(0.8);
+}
+
+.image_saturate {
+  filter: saturate(158%);
+}
+
+.image_sepia {
+  filter: sepia(80%);
+}
+
+.image_combinate {
+  filter: contrast(200%) blur(0.15rem);
+}
+
+@media (width <= 450px) {
+  .page {
+    width: 100%;
+    min-width: 320px;
+  }
+
+  .footer__button {
+    flex-direction: column;
+  }
+
+  .footer__button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    padding: 30px 40px;
+  }
+}
